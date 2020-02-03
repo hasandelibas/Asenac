@@ -11,37 +11,38 @@ Js Front End View Engine
     $       $$      $$$
     Self    Keys    Global
 
-html.{
-    <h1> Hello World </h1>
-}
 
-:: FOR_DATA : KEY_NAME
+    html.{
+        <h1> Hello World </h1>
+    }
 
-:? IF STATEMENT
+    :: FOR_DATA : KEY_NAME
 
-:! ELSE IF
+    :? IF STATEMENT
 
-:! ELSE
+    :! ELSE IF
 
--> GOTO OTHER PAGE
+    :! ELSE
 
-// COMMENT
+    -> GOTO OTHER PAGE
 
-- EVAL JS
+    // COMMENT
 
-:# REPLACE WITH ID
+    - EVAL JS
 
-:> REPLACE WITH ALL SELECTOR
+    :# REPLACE WITH ID
 
-:+ APPEND WITH ALL SELECTOR
+    :> REPLACE WITH ALL SELECTOR
+
+    :+ APPEND WITH ALL SELECTOR
 
 
-: title : div.title[title=title]> Title OBJ
+    : title : div.title[title=title]> Title OBJ
 
 # Create HTML Element
 
-> TEXT NODE
+    > TEXT NODE
 
-div.class#id[attr=value]> INNER HTML TEXT
+    div.class#id[attr=value]> INNER HTML TEXT
 
-div[@empty={{ 1==1 ? "" :"1" }}]> INNER HTML TEXT
+    div[@empty={{ 1==1 ? "" :"1" }}]> INNER HTML TEXT
