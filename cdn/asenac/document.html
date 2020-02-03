@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Asena.Js</title>
+
+        <script type="text/javascript" src="js/delibas.js"></script>
+
+        <script type="text/javascript" src="js/Asenac.js"></script>
+        <script type="text/javascript" src="js/PreAsenac.js"></script>
+        <script type="text/javascript" src="js/JsonAsenac.js"></script>
+
+        <script type="text/javascript" src="js/FrontEnd.Asena.View.js"></script>
+        <script type="text/javascript" src="js/Browser.View.js"></script>
+
+        <script type="text/javascript" src="js/RealData.js"></script>
+
+
+
+        <meta charset="utf8">
+    </head>
+    <style type="text/css">
+        .btn {
+            padding: 10px;
+            float: right;
+            margin-right: 10px;
+            color: white;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .btn-success {
+            border: 0px solid #9F8;
+            background: #5A5;
+        }
+        
+        .btn-info {
+            border: 0px solid #00F;
+            background: #49F;
+        }
+        
+        .btn:hover {
+            box-shadow: inset 0px 0px 0px 100px #0001;
+        }
+        
+        body {
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+        
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        
+        pre {
+            background: #DDD;
+            border: 2px solid #AAA;
+            height: calc( 50vh - 29px);
+            overflow: scroll;
+            width: calc( 50vw - 0px);
+            display: inline-block;
+            float: left;
+            font-family: monospace!important;
+        }
+        
+        pre * {
+            font-family: monospace!important;
+        }
+        
+        #code-asena::before {
+            content: "Asena Script";
+            color: #999;
+            display: block;
+        }
+        
+        #code-json::before {
+            content: "Json Data";
+            color: #999;
+            display: block;
+        }
+        
+        #out-html::before {
+            content: "Html Out";
+            color: #999;
+            display: block;
+        }
+        
+        #out::before {
+            content: "Output";
+            color: #999;
+            display: block;
+        }
+    </style>
+
+    <body>
+
+        <h2 style="background: #444;color: white;margin: 0px;padding: 15px">
+            Asena.js
+            <button onclick="outPut()" class='btn btn-success'>
+            OUTPUT
+       </button>
+            <button onclick="complieCrel()" class='btn btn-success'>
+            Crel > HTML
+        </button>
+            <button onclick="save()" class='btn btn-info'>
+            Save on Cookie
+       </button>
+
+        </h2>
+
+        <div>
+            <pre id='code-asena' contenteditable="true" style="" spellcheck="false">
+div[onclick=Sil()]>Sil
+!Hatalı birşekilde dönüşüyor
+!div[onclick=()]>Sil
+        </pre>
+            <pre id='out-html' style="background: #EEE;color:#444;">
+* Ayrıştırma hatası 
+div[style=font-size:{{ $users.length > 2 ? 16 : 8 }}px]>Merhaba $user['x']
+* Replace için
+:# sil baştan yaz
+:+# arkasına ekle
+:-# önüne ekle
+            </pre>
+        </div>
+        <div>
+            <pre id='code-json' contenteditable="true" style="" spellcheck="false"></pre>
+            <pre id='out' style="background: #EEE;color:#444;font-family: inherit"></pre>
+        </div>
+
+
+    </body>
+
+    <script type="text/javascript">
+        DEBUG = true;
+
+        function id(str) {
+            return document.getElementById(str);
+        }
+        codes = [id("code-asena"), id("code-json")];
+
+
+        for (let i = 0; i < codes.length; i++) {
+            var code = codes[i]
+            if (code.addEventListener) {
+                code.addEventListener('keydown', this.keyHandler, false);
+            } else if (code.attachEvent) {
+                code.attachEvent('onkeydown', this.keyHandler); /* damn IE hack */
+            }
+
+        }
+
+        function keyHandler(e) {
+            var TABKEY = 9;
+            if (e.keyCode == TABKEY) {
+                insertHTML("  ")
+                if (e.preventDefault) {
+                    e.preventDefault();
+                }
+                return false;
+            }
+        }
+
+        function insertHTML(str) {
+            var sel, range;
+            if (window.getSelection && (sel = window.getSelection()).rangeCount) {
+                range = sel.getRangeAt(0);
+                range.collapse(true);
+                var span = document.createElement("span");
+                span.appendChild(document.createTextNode(str));
+                range.insertNode(span);
+
+                // Move the caret immediately after the inserted span
+                range.setStartAfter(span);
+                range.collapse(true);
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+        }
+
+        function complieCrel() {
+            var code = id("code-asena").innerText;
+            var json = JSON.parse(id("code-json").innerText);
+            var crel = Crel(code, json)
+            id("out-html").innerText = crel.outerHTML;
+            id("out").innerHTML = crel.outerHTML;
+
+        }
+
+        function complieAsena() {
+            var code = id("code-asena").innerText;
+            var json = JSON.parse(id("code-json").innerText);
+            Asena.pages.test = code;
+            var asena = Asena("test", json)
+            id("out").innerHTML = ""
+            Asena.appendChild(id("out"), asena)
+
+            id("out-html").innerText = id("out").innerHTML.replaceAll(">", ">\n").replaceAll("</", "\n</");
+
+        }
+
+        function save() {
+            localStorage.setItem("code-asena", id("code-asena").innerHTML);
+            localStorage.setItem("code-json", id("code-json").innerHTML);
+        }
+        id("code-asena").innerHTML = localStorage.getItem("code-asena").replaceAll("\n", "<br>")
+        id("code-json").innerHTML = localStorage.getItem("code-json").replaceAll("\n", "<br>")
+
+
+        function x() {
+            a = ToObj(id("out"), {
+                type: "dict",
+                sel: "table",
+                data: (e => e.getAttribute('bank')),
+                value: {
+                    type: "array",
+                    sel: "tbody tr input",
+                    value: {
+                        type: "string",
+                        value: (e => e.value)
+                    }
+                }
+            })
+            console.log(a)
+        }
+
+        let out = document.getElementById("out");
+        let json = document.getElementById("code-json")
+
+        function outPut() {
+            out.empty()
+            jsonAsena = Asenac.GetJsonAsenac(acode)
+            rd = new RealData.RealData(jcode);
+
+            
+            asenaEl = AsenaView(acode,rd)
+            out.appendChild(asenaEl)
+        }
+
+        function SayJSON() {
+
+        }
+    </script>
+
+    <script>
+        window.__defineGetter__("acode", function() {
+            return id("code-asena").innerText;
+        })
+        window.__defineGetter__("jcode", function() {
+            return JSON.parse(id("code-json").innerText);
+        })
+    </script>
+
+
+</html>

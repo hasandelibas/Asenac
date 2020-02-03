@@ -1,0 +1,105 @@
+<code>
+table
+    thead
+        tr
+            td>Taksit
+            td>Vade Farkı
+            td>Fiyat
+    tbody
+        ::$akbank:a
+        tr
+            td>{{ parseInt($$a) + 2 }}
+            td>$
+            td>{{ $ * $$$fiyat }}
+    
+style> td{ border:1.5px solid #999;margin:0px;padding:4px }
+.. tr{margin:0px} table { border-collapse: collapse;}
+
+</code>
+
+<json>
+{
+    "akbank"  :[ 0 , 0 , 0 , 15 ],
+    "fiyat"  :1200
+}
+</json>
+
+
+<code>
+div
+  div
+    h3>Merhaba Dünya
+    p>Dünyanın açıklaması
+.. bu dünya işleri ne kadar da yalan
+  ::$kisiler:k
+    li
+      b>$$
+      p>Adı: $adi 
+      p>Global $$$kisiler${{$$}}$soyadi
+      p>Soyadı: $soyadi
+</code>
+<json>{
+        "kisiler":[
+          {"adi":"Hasan","soyadi":"Delibaş"},
+          {"adi":"xxxxx","soyadi":"Delibaş"}
+        ]  
+      }</json>
+
+
+
+<code>style> td,th{ border:1.5px solid #999;margin:0px;padding:4px }
+  .. tr{margin:0px} table { border-collapse: collapse;}
+  ::$bankalar:bank
+    h4>$$bank
+    table[bank=$$bank]
+      thead
+        th>Taksit
+        th>Vade Farkı
+        th>Toplam Tutar
+      tbody
+      :: range(2,12) :index
+        tr
+          td>{{ parseInt($$index) + 2 }}
+          td
+            input[value=$]
+          :? isNaN($$$bankalar${{ $$bank }}${{$$index}} ) == false
+  
+            td>{{ $$$fiyat * $ }}
+          :? isNaN($)
+            td> -</code>
+
+<json>{
+  "fiyat":1500,
+  "bankalar":{
+    "akbank":["-","-","-","-","-","-","-","-","-",0,0]
+  }
+}</json>
+
+
+<code>style> td,th{ border:1.5px solid #999;margin:0px;padding:4px }
+  .. tr{margin:0px} table { border-collapse: collapse;}
+  ::$bankalar:bank
+    h4>$$bank
+    table[bank=$$bank]
+      thead
+        th>Taksit
+        th>Vade Farkı
+        th>Toplam Tutar
+      tbody
+      :: range(2,12) :index
+        tr
+          td>{{ parseInt($$index) + 2 }}
+          td
+            input[value=$$$bankalar${{ $$bank }}${{$$index}}]
+          :? isNaN($$$bankalar${{ $$bank }}${{$$index}} ) == false
+  
+            td>{{ $$$fiyat * $$$bankalar${{ $$bank }}${{$$index}} }}
+          :!
+            td> -</code>
+
+<json>{
+  "fiyat":1500,
+  "bankalar":{
+    "akbank":["1","-","-","-","-","-","-","-","-",0,0]
+  }
+}</json>

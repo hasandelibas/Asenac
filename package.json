@@ -1,0 +1,13 @@
+{
+    "name": "node-ejs",
+    "main": "server.js",
+    "dependencies": {
+        "cookie-parser": "^1.4.4",
+        "ejs": "^1.0.0",
+        "esprima": "^4.0.1",
+        "express": "^4.6.1",
+        "md5": "^2.2.1",
+        "tsc": "^1.20150623.0",
+        "typescript": "^3.7.4"
+    }
+}

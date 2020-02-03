@@ -1,0 +1,93 @@
+html,body{
+    height: 100%;
+    background: #DDD;
+    user-select: none;
+}
+
+#header-section{
+    height: 50px;
+    font-size: 20px;
+    background: #AAA;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#666;
+    font-weight: bold;
+}
+#main-section{
+    height: calc(100% - 50px);
+    display: flex;
+}
+#item-section{
+    flex: 1;
+    background: #DDD;
+}
+#right-menu-section{
+    width: 300px;
+    background: #FFF;
+}
+
+
+#file-browser .item{
+    margin:4px;
+    padding: 6px;
+    border:1px solid #AAA;
+    background: #EEE;
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+}
+#file-browser[design=small] .item{
+    width:200px;
+    height:40px;
+    display: inline-block;
+    overflow: hidden;
+}
+#file-browser[design=big] .item{
+    width: 100px;
+    height: 100px;
+    display: inline-flex;
+    overflow: hidden;
+    font-size: 14px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 1;
+}
+#file-browser[design=big] .item i{ 
+    display: block;
+    font-size:2em
+}
+
+
+#file-browser .item:hover{
+    transform: scale(1.01)
+}
+#file-browser .item:active{
+    transform: scale(0.98)
+}
+#file-browser .item i{
+    width:40px;
+    text-align: center
+}
+
+.address-bar{
+    background: #999;
+    padding: 4px;
+    width: 100%;
+}
+.address-bar button{
+    border-radius: 0px!important;
+}
+
+
+
+
+/* PREVIEW AREA  */
+
+#preview iframe{
+    border: 2px solid #CCC;
+    width:100%;
+    height: calc(100% - 60px);
+    margin-top:6px;
+}

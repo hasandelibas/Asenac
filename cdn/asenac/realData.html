@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="real-data.svg" type="image/x-icon">
+        <title>Real Data</title>
+    </head>
+
+    <body>
+        <pre>
+T:: Trigger, C:: Call, O:: On
+
+<b>## DEFINE DATA</b>
+T:: "/path/define" , data
+C:: "/path/define" , data
+O:: "/path/define" , data
+
+<b>## ARRAY ADD</b>
+T:: "/list/+(index)-(count)" , data
+C:: "/list/+(index)-(count)"   -> insert count
+C:: "/list/+(index)" , data    -> insert
+C:: "/list/+" , data           -> add last
+O:: "/list/+" , data, index
+
+when index == null add new data at last
+
+<b>##ARRAY REMOVE</b>
+T:: "/list/-(index)+(count)"
+C:: "/list/-(index)+(count)"
+C:: "/list/-(index)"          -> remove one from index
+C:: "/list/-"                 -> remove last one
+O:: "/list/-" , data, index, count
+
+<b>## Features </b>
+BLOCK  -> Dataya Block koyma değiştirmeyi engelleme
+SYNC   -> Senkronizasyon
+FROM_SERVER -> Yeni ID'yi sunucudan alma, ilk mesajı kimin yolladığını seçmek için geliştirilmiştir.
+
+
+
+</pre>
+    
+    </body>
+    <script src="js/delibas.js"></script>
+
+    <script src="js/RealData.js"></script>
+    <script style="display: none">
+        RealData._DEBUG_MODE_ = true;
+
+        var rd = new RealData.RealData();
+        rd.data = {
+
+            users: [{
+                name: "Hasan",
+                surname: "Delibaş"
+            }, {
+                name: "Asena",
+                surname: "Bozdağ"
+            }]
+        }
+
+        rd.on("/users/0", function() {
+            console.log("/users/0", "has changed");
+            console.warn("Uyarı")
+        });
+        rd.on("/users/-", function(data, index, count) {
+            console.log("/users/-", data, index, count);
+        });
+        rd.on("/users/+", function(data, index, count) {
+            console.log("/users/+", data, index, count);
+        })
+    </script>
+
+</html>

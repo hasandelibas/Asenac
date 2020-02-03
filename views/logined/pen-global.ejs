@@ -1,0 +1,471 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asenac</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/view.css">
+
+    <script src="codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+    <script src="codemirror/mode/javascript/javascript.js"></script>
+    <script src="codemirror/mode/css/css.js"></script>
+    <script src="codemirror/mode/pug/asenac.js"></script>
+    <script src="codemirror/mode/xml/xml.js"></script>
+    <script src="codemirror/mode/htmlmixed/htmlmixed.js"></script>
+
+    <!-- HINT -->
+    <link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
+    <script src="codemirror/addon/hint/show-hint.js"></script>
+    <script src="codemirror/addon/hint/css-hint.js"></script>
+    <script src="codemirror/addon/hint/javascript-hint.js"></script>
+    <!-- HINT END -->
+
+    <!-- LINT -->
+    <link rel="stylesheet" href="codemirror/addon/lint/lint.css">
+    <script src="codemirror/unpkglint/jshint.js"></script>
+    <script src="codemirror/unpkglint/jsonlint.js"></script>
+    <script src="codemirror/unpkglint/csslint.js"></script>
+    
+    <script src="codemirror/addon/lint/lint.js"></script>
+    <script src="codemirror/addon/lint/javascript-lint.js"></script>
+    <script src="codemirror/addon/lint/json-lint.js"></script>
+    <script src="codemirror/addon/lint/css-lint.js"></script>
+
+
+    <!-- FOLD GUTTER - OPEN CLOSE BRACKET INSIDE -->
+
+    <link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css" />
+    <script src="codemirror/addon/fold/foldcode.js"></script>
+    <script src="codemirror/addon/fold/foldgutter.js"></script>
+    <script src="codemirror/addon/fold/brace-fold.js"></script>
+    <script src="codemirror/addon/fold/xml-fold.js"></script>
+    <script src="codemirror/addon/fold/indent-fold.js"></script>
+    <script src="codemirror/addon/fold/markdown-fold.js"></script>
+    <script src="codemirror/addon/fold/comment-fold.js"></script>
+    <!-- FOLD GUTTER END -->
+    <script src="/cdn/asenac/js/delibas.js"></script>
+    <script src="/cdn/asenac/js/JsonAsenac.js"></script>
+    <script src="/cdn/asenac/js/Asenac.js"></script>
+    <script src="/cdn/asenac/js/RealData.js"></script>
+    <script src="/cdn/asenac/js/Browser.View.js"></script>
+    <script src="/cdn/asenac/js/Browser.RealData.View.js"></script>
+    <script src="/cdn/asenac/js/Lss.js"></script>
+
+    <!-- GENEL EKLENTILER -->
+    <link rel="stylesheet" href="codemirror/addon/dialog/dialog.css">
+    <link rel="stylesheet" href="codemirror/addon/search/matchesonscrollbar.css">
+    <script src="codemirror/addon/search/searchcursor.js"></script>
+    <script src="codemirror/addon/search/search.js"></script>
+    <script src="codemirror/addon/dialog/dialog.js"></script>
+    <script src="codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="codemirror/addon/edit/closebrackets.js"></script>
+    <script src="codemirror/addon/comment/comment.js"></script>
+    <script src="codemirror/addon/wrap/hardwrap.js"></script>
+    <script src="codemirror/addon/fold/foldcode.js"></script>
+    <script src="codemirror/addon/fold/brace-fold.js"></script>
+
+    <!-- ARAMA EKLENTILERI -->
+    <script src="codemirror/addon/scroll/annotatescrollbar.js"></script>
+    <script src="codemirror/addon/search/matchesonscrollbar.js"></script>
+    <script src="codemirror/addon/search/jump-to-line.js"></script>
+
+
+    <!-- KEY MAP SUBLIME -->
+    <script src="codemirror/keymap/sublime.js"></script>
+
+    <link rel="stylesheet" href="codemirror/theme/monokai.css">
+    <link rel="stylesheet" href="codemirror/theme/ambiance.css">
+    <link rel="stylesheet" href="codemirror/theme/mbo.css">
+    <link rel="stylesheet" href="codemirror/theme/neo.css">
+ 
+    <!-- SCROLL STYLE --->
+    <link rel="stylesheet" href="codemirror/addon/scroll/simplescrollbars.css">
+    <script src="codemirror/addon/scroll/simplescrollbars.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome/font-awesome.min.css">
+    <style>
+    .CodeMirror-wrap pre.CodeMirror-line, .CodeMirror-wrap pre.CodeMirror-line-like {
+        white-space: pre;
+    }
+    </style>
+
+    <script src="js/asenac.js"></script>
+    <script src="js/karala.run.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/sweetalert.min.2@8.js"></script>
+    <script src="js/nThema_Modal.js"></script>
+
+
+    <style>
+     .tab-menu{padding:4px;
+  margin:0px;
+  display:flex;
+  user-select:none;} .tab-menu > li{cursor:pointer;
+    display:inline-block;
+    padding:4px;
+    margin:0px 4px;
+    transition:all 0.1s;
+    border-radius:16px;} .tab-menu > li:hover{box-shadow:0px 0px 1px 3px #888;
+    	background:#888;
+      color:white;} .tab-menu > li.active{box-shadow:0px 0px 1px 3px #222;
+    	background:#222;
+      color:white;}
+      </style>
+
+
+<!-- LEFT-MENU-BAR  -->
+<style>
+  ul.tree-view{list-style-type: none;cursor:default;	user-select:none;	text-decoration:none;} ul.tree-view{padding:0px;		margin:0px;		box-sizing:border-box;} ul.tree-view *{padding:0px;		margin:0px;		box-sizing:border-box;} ul.tree-view ul{list-style-type: none;} ul.tree-view li{height:30px;		padding:4px;} ul.tree-view li.tree-view-container .open-close{margin:-4px;			height:30px;			width:24px;			transition:transform .2s;			cursor:pointer;			display:inline-flex;align-items:center;justify-content:center;} ul.tree-view li.tree-view-container .open-close:hover{color:#555;} ul.tree-view li.tree-view-container.opened .open-close{transform:rotate(90deg)} ul.tree-view li:hover{background:#0002;} ul.tree-view li.selected{background:#4AF;color:white;} ul.tree-view ul{padding-left:12px;		margin-left:12px;		position:relative;		border-left:1px solid #0002;}
+</style>
+<script>
+$(document).on("click",".tree-view .tree-view-container .open-close",function(){
+	$(this).parents(".tree-view-container").toggleClass("opened").next().slideToggle();
+})
+
+$(document).on("click",".tree-view li",function(e){
+	$(this).parents(".tree-view").find("li").removeClass("selected");
+    $(this).addClass("selected")
+    if(e.target.tagName!="LI") return;
+    id = parseInt(this.getAttribute("_id"))
+    Select(id)
+})
+
+</script>
+
+</head>
+<body>
+    <top-menu style="display: flex;align-items: center;padding: 5px;"> 
+        <a class='button' href="/"> <i class='fa fa-angle-left'></i> </a>  
+        <div style="flex: 1;padding-left: 10px;">
+            KaralaKod <small>Asenac Complier</small> 
+            <button onclick="ShowInfoModal()" class="border-icon" style="width:24px;height:24px;padding:0px">
+                <i class='fa fa-question'></i>
+            </button>
+        </div>
+        <span class="group" style="display: inline-flex;float-right">
+            <button class='button' onclick="Run()">
+                <i class="fa fa-play"></i> Complie
+            </button>
+            <button class='button' onclick="SaveLocalProject()">
+                <i class="fa fa-save"></i>
+                <u>S</u>ave
+            </button>
+            <button class='button' onclick="RunGlobal()">
+                <i class="fa fa-play"></i>
+                Run Global
+            </button>
+            <button class='button' onclick="ExportPlugin()">
+                <i class="fa fa-play"></i>
+                Export Plugin
+            </button>
+
+        </span>
+    </top-menu>
+    <middle-menu>
+        <left-menu id="left-menu"> 
+            <div id="project-toolbar">
+                <span onclick="Karala_Project.NewPen()" title="New Pen">
+                    <i class='fa fa-file-o'></i>
+                </span>
+                <span onclick="Karala_Project.Rename()" title="Rename Pen">
+                    <i class='fa fa-italic'></i>
+                </span>
+                <span onclick="Karala_Project.Delete()" title="Delete Pen">
+                    <i class='fa fa-trash'></i>
+                </span>
+                <span onclick="Karala_Project.Library()" title="External Libraries - Scripts">
+                    <i class='fa fa-inbox'></i>
+                </span>
+    
+                <style>
+                    #project-toolbar{
+                        background: #ccc;
+                        color: #666;
+                    }
+                    #project-toolbar span{
+                        padding:10px;
+                        display: inline-block;
+                        cursor: pointer;
+                        width: 40px;
+                        text-align: center;
+                    }
+                    #project-toolbar span:hover{
+                        color: #FFF;
+                        background:#4AF;
+                    }
+                </style>
+            </div>
+            <div id="project-menu">
+
+            </div>
+        </left-menu>
+        <main-menu class='grid-view'>
+            <section id="asena">
+                <header>Asena 
+                    <style>
+                        #asenacType{
+                            float:right;
+                            padding: 2px;
+                            background: #fff;
+                            border-radius: 4px;
+                        }
+                    </style>
+                    <select id='asenacType'>
+                        <option value="asenac/function">asenac/function</option>
+                        <option value="asenac/realdata">asenac/realdata</option>
+                        <option value="asenac/plugin">asenac/plugin</option>
+                    </select>
+
+                </header>
+            </section>
+            <section id="json">
+                <header class='tab-menu'>
+                    <li id='json-button' onclick="ShowJson()">Json</li>
+                    <li id='js-button' onclick="ShowJs()">JS</li>
+                    <li id='ts-button' onclick="ShowTs()">TS</li>
+                    <li id='console-button' onclick="ShowConsole()">Console</li>
+                </header>
+                <div id='console'>
+                    <div id='console-log'></div>
+                    <input id='console-type'>
+                </div>
+            </section>
+            <section id="css">
+                <header>Lss</header>
+            </section>
+            <section id="iframe">
+                <header>Run</header>
+                <iframe id="run" src="javascript:void(0);"></iframe>
+            </section>
+
+        </main-menu>
+    </middle-menu>
+
+
+</body>
+<style>
+    .CodeMirror{
+        font-family: "Ubuntu Mono", monospace;
+        font-size: 16px;
+        line-height: 18px;
+    }
+</style>
+
+
+<script name="tree-view" type="asenac/realdata">
+:: $ : key : ul.tree-view
+  li.tree-view-container[_id=$_id]
+    - _Last_LeftMenu_ID = _Last_LeftMenu_ID < $_id ? $_id : _Last_LeftMenu_ID
+    :? $_children$length > 0 : span
+      span.open-close
+        i.fa.fa-chevron-right
+    >$_text
+  -> tree-view > $_children
+</script>
+<script>
+    Asenac.Load();
+
+    var standartOptions = {
+        matchBrackets: true,
+        lineNumbers: true,
+        tabSize:2,
+        indentUnit: 2,
+        autoCloseBrackets: true,
+        /*showCursorWhenSelecting: true,*/
+        theme: "neo",
+        keyMap: "sublime",
+        extraKeys: {"Ctrl-Space": "autocomplete","Ctrl-S":e=>Karala_Project.Save()},
+        lineNumbers: true,
+        lineWrapping: false,
+        scrollbarStyle: "simple",
+
+        foldGutter: true,
+        gutters: [/*"CodeMirror-lint-markers",*/"CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+        /*lint:true,
+        codeLinting:     true,*/
+
+        viewportMargin:  Infinity,
+        styleActiveLine: true,
+        
+    }
+
+    let Codes = {
+        asena: CodeMirror(document.getElementById("asena"),
+        Object.assign(standartOptions,{
+            value: "div> Hello World",
+            mode: {name: "asena", alignCDATA: true},
+            indentUnit: 2,
+            indentWithTabs: true,
+        })),
+        css: CodeMirror(document.getElementById("css"),
+        Object.assign(standartOptions,{
+            value: "body{}",
+            mode: "text/x-scss",
+
+        })),
+        json: CodeMirror(document.getElementById("json"),
+        Object.assign(standartOptions,{
+            value: "{ \"list\" : [] }",
+            mode: "application/ld+json"
+        })),
+        js: CodeMirror(document.getElementById("json"),
+        Object.assign(standartOptions,{
+            value: "console.log('Hello World')",
+            mode: "javascript"
+        })),
+        ts: CodeMirror(document.getElementById("json"),
+        Object.assign(standartOptions,{
+            value: "",
+            mode: "text/typescript",
+            lineWrapping: true
+        })),
+        library:CodeMirror(document.createElement("div"),
+        Object.assign(standartOptions,{
+            value: "",
+            mode: "text/html",
+            lineWrapping: true
+        }))
+    }
+
+
+
+    for (const key in Codes) {
+        if (Codes.hasOwnProperty(key)) {
+            const code = Codes[key];
+            code.getWrapperElement().id = key;
+            code.element = code.getWrapperElement();
+        }
+    }
+    Codes.asena.element.classList.add("show-tab")
+
+    let run = document.getElementById("run")
+
+    function ShowJs() {
+        Codes.ts.element.style.display="none";
+        Codes.json.element.style.display="none";
+        Codes.js.element.style.display="block";
+        document.getElementById("console").style.display="none"
+        $(".tab-menu li").removeClass("active");$("#js-button").addClass("active");
+        Codes.js.refresh()
+    }
+    function ShowJson() {
+        Codes.ts.element.style.display="none";
+        Codes.json.element.style.display="block";
+        Codes.js.element.style.display="none";
+        document.getElementById("console").style.display="none"
+        $(".tab-menu li").removeClass("active");$("#json-button").addClass("active");
+        Codes.json.refresh()
+    }
+    function ShowTs() {
+        Codes.ts.element.style.display="block";
+        Codes.json.element.style.display="none";
+        Codes.js.element.style.display="none";
+        document.getElementById("console").style.display="none"
+        $(".tab-menu li").removeClass("active");$("#ts-button").addClass("active");
+        Codes.ts.refresh()
+    }
+    function ShowConsole() {
+        Codes.ts.element.style.display="none";
+        Codes.json.element.style.display="none";
+        Codes.js.element.style.display="none";
+        document.getElementById("console").style.display="block"
+        $(".tab-menu li").removeClass("active");$("#console-button").addClass("active");
+    }
+    ShowJs();
+    let oldTyped = [];
+    let oldTypedIndex = 0;
+    $("#console-type").keydown(e=>{
+        if( e.shiftKey==false && e.keyCode==13){
+            // Console Write To
+            run = document.getElementById("run")
+            ConsoleLogFromIframeTyped($("#console-type").val());
+            oldTyped.push( $("#console-type").val() )
+            oldTypedIndex = oldTyped.length;
+            if( ["clear","clear()"].includes($("#console-type").val().trim()) ){
+                $("#console-log").html("")
+                return;
+            }
+            try{
+                let x =run.contentWindow.window.eval.bind(run.contentWindow.window)($("#console-type").val());
+                ConsoleLogFromIframe(x);
+            }catch(e){
+                console.log(e)
+                ConsoleLogError(null,$("#console-type").val(),0,0,e)
+            }
+            $("#console-type").val("")
+        }
+        // 38 Up , 40 Down
+        if( e.keyCode == 38 ){
+            oldTypedIndex--;
+            if(oldTypedIndex<0) oldTypedIndex=0;
+            $("#console-type").val( oldTyped[oldTypedIndex] );
+        }
+        // 38 Up , 40 Down
+        if( e.keyCode == 40 ){
+            oldTypedIndex++;
+            if(oldTypedIndex>oldTyped.length-1) oldTypedIndex=oldTyped.length-1;
+            $("#console-type").val( oldTyped[oldTypedIndex] );
+        }
+    });
+    function ConsoleLogFromIframe(){
+        for (let i = 0; i < arguments.length; i++) {
+            const element = arguments[i];
+            var text= element;
+
+            if(typeof(text) =="symbol") text= text.toString();
+            $("#console-log").append("<div class='"+typeof(element)+"'>"+text+"</div>");
+        }
+        $("#console-log").get(0).scrollTop = $("#console-log").get(0).scrollHeight
+    }
+    function ConsoleLogFromIframeTyped(){
+        for (let i = 0; i < arguments.length; i++) {
+            const element = arguments[i];
+            $("#console-log").append("<div class='typed'>"+element+"</div>");
+        }
+        $("#console-log").get(0).scrollTop = $("#console-log").get(0).scrollHeight
+    }
+
+    function ConsoleLogError(e,source,line,col,er){
+        var errorName = er.name;
+        var errorMessage = er.message;
+        var errorLine = line;
+        var errorCol  = col;
+        var source    = source;
+        var stack     = er.stack;
+        $("#console-log").append("<div class='error'>"+
+            errorName + ":" + errorMessage + " at " + source + " <b>" + errorLine + ":" +errorCol + "</b>"+
+            "</div>");
+            $("#console-log").get(0).scrollTop = $("#console-log").get(0).scrollHeight
+    }
+
+
+    
+    function ShowInfoModal() {
+        ShowInfoModal.Modal.show();
+    }
+
+    ShowInfoModal.Modal = Modal({
+        title:"theBlackCode",
+        textOld:"<img src='nobetci.png' style='width:100%'>",
+        text:"<pre style='font-size:8px;font-weight:bold;text-shadow: 0px 0px 2px, 0px 0px;text-align:center;'>     ____        ___     ___   ___     ___                      ___                    ___ \n    /    \\      /  /    /__/  /__/    /  /                  ___/  /__                 /__/ \n   /  /\\  \\    /  /    __________    /  /___     _________ /__   ___/   __________   ___   \n  /  /  \\  \\  /  /    /  ____   /   /  ____  \\  /  ___   /   /  /      /  _______/  /  /   \n /  /    \\  \\/  /    /  /___/  /   /  /___/  / /  ______/   /  /___   /  /______   /  /    \n/__/      \\____/    /_________/   /_________/ /________/   /______/  /___   ___/  /__/     \n                                                                        /__/               </pre>" +
+        "<pre style='font-size:5px;font-weight:bold;text-shadow: 0px 0px 2px, 0px 0px;text-align:center;'>     ___                                                                      ___                 ___      ___     ___                            \n    /  /                                                                     /  /                /  /     /__/    /  /                            \n   /  /______   ________    _________   ________     _______         _______/  /   _________    /  /     ___     /  /___     ________    _________\n  /  ____   /  /______  \\  /           /______  \\   /  ___  \\       /  ____   /   /  ___   /   /  /     /  /    /  ____  \\  /______  \\  /         \n /  /   /  /   /  ____  / ·--------·   /  ____  /  /  /  /  /      /  /___/  /   /  ______/   /  /___  /  /    /  /___/  /  /  ____  / ·--------· \n/__/   /__/    \\_______/  ________/    \\_______/  /__/  /__/       \\________/    \\_______/    \\_____/ /__/     \\________/   \\_______/  ________/  \n                                                                                                                                         /__/    </pre>",
+        footer:"Nöbetçi Group : theBlackCode Version 1.0. | Free-Software | All left reserved :-)",
+        show:false
+    });
+
+
+    function SaveLocalProject() {
+        Karala_Project.SaveLocal(_Selected_Data);
+        localStorage.setItem("project", JSON.stringify( rdFile.data ) );
+    }
+    if(localStorage.getItem("project")){
+        Karala_Project.Load( JSON.parse(localStorage.getItem("project")) );
+    } else{
+        Karala_Project.Load( null );
+    }
+
+</script>
+</html>

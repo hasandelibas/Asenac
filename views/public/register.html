@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>KaralaKod | Register</title>
+        <meta name='viewport' content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">   
+        <link rel="stylesheet" type="text/css" href="css/menu-design.css">
+        <link rel="stylesheet" type="text/css" href="css/fontawesome-free-5.7.2-web/css/all.min.css">
+        
+    </head>
+    <body>
+        <h2 id='header-section'> KaralaKod | Register  </h2>
+        <div id='main-section'>
+            <div class='col-md-6 offset-md-3'>
+                <hr>
+                
+                <script>
+                    console.log(window.location.hash)
+                    if(window.location.hash=="#error"){
+                        document.getElementById("error").innerHTML="Kullanıcı adı ve ya şifre hatalı!"
+                    }
+                </script>
+                <form  method="POST" action="/register" autocomplete="off" autocomplete="false">
+                    <div class="form-group">
+                            <label for="exampleInputName1">Name</label>
+                            <input name=name type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                        </div>
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">User</label>
+                    <input name=nick type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nick"  autocomplete="off" autocomplete="false">
+                    
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input name=pass type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+
+                    
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+
+    </body>
+    <script src="jquery.min.js"></script>
+
+</html>

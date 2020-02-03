@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>KaralaKod</title>
+        <meta name='viewport' content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">   
+        <link rel="stylesheet" type="text/css" href="css/menu-design.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome/font-awesome.min.css">
+        <script src="js/sweetalert.min.2@8.js"></script>
+        <style>
+            @font-face {
+                font-family: 'Ubuntu';
+                src: url('Ubuntu-Light.ttf') format('truetype');
+                /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+            }
+
+            @font-face {
+                font-family: 'Ubuntu Mono';
+                src: url('UbuntuMono-Regular.ttf') format('truetype');
+                /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+            }
+            body{
+                font-family: "Ubuntu", sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+            <a class="navbar-brand" href="/">KaralaKod</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/profile"> <i class="fa fa-user" aria-hidden="true"></i> Profilim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/local-pen"> <i class="fa fa-pencil" aria-hidden="true"></i> Yerel Karalama</a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        </nav>
+
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="text-muted"> Profilim </h4>
+                    <div id="profilim"></div>
+                    <%- name %>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-muted"> Karalamalarım </h4>
+                    <div id="karalamalar"></div>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-muted"> Projeler 
+                        <a  class='btn btn-primary btn-sm' href="#" onclick="NewProject()"> <i class='fa fa-plus'></i> New Project</a>
+
+                    </h4>
+                    <div id="projeler">
+                        <% for(const p of projects){ %>
+                            <a  class='btn btn-block btn-primary' href="/project/<%- p %>"> <%- p %> </a>
+                        <% } %>
+                    </div>
+                </div>
+                            
+            </div>
+            
+        </div>
+
+    </body>
+    <script src="js/jquery.min.js"></script>
+
+    <script>
+    
+    function NewProject() {
+        Swal.fire({
+            position:"top-right",
+            title: 'New Project Name',
+            input: 'text',
+            inputAttributes: {
+                autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Create',
+            cancelButtonText:"Cancel",
+            showLoaderOnConfirm: true,    
+        }).then(function(e){
+            if("dismiss" in e) return
+            window.location = "/new-project/"+e.value;
+        })
+    }
+    </script>
+
+</html>

@@ -1,0 +1,302 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('Ubuntu-Light.ttf') format('truetype');
+    /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: url('UbuntuMono-Regular.ttf') format('truetype');
+    /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+body{
+    font-family: "Ubuntu", sanf-serif;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+
+}
+
+
+*{
+    box-sizing: border-box
+}
+top-menu{
+    background: linear-gradient(0deg, #CCC, #DDDD);
+    color:#666;
+    font-weight: bold;
+    display: block;
+    padding:10px;
+    user-select: none;
+}
+middle-menu{
+    flex:1;
+    display: block;
+    display: flex;
+    flex-direction: row;
+    max-height: calc(100% - 43px)
+}
+left-menu{
+    width: 240px;
+    min-width:240px;
+    background: #CCC;
+    padding: 0px;
+    user-select: none;
+    flex:0;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+left-menu #project-menu{
+    overflow:auto;
+}
+
+main-menu{
+    flex:1;
+}
+main-menu.grid-view{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+    grid-gap: 0px;
+
+}
+
+main-menu section{
+    overflow: hidden;
+    border:1px solid #CCC;
+}
+main-menu section header{
+    height: 30px;
+    background: #EFEFEF;
+    padding: 6px 30px;
+    font-weight: bold;
+    color:#555;
+    user-select: none;
+}
+main-menu section > .CodeMirror,main-menu section > #console {
+    height: calc(100% - 30px)!important;
+}
+#console {
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 15px;
+    background: #efefef;
+    color: #111;
+}
+#console-log{
+    height:calc(100% - 30px);
+    padding:10px;
+    overflow-y: scroll;
+}
+#console-type{
+    font-family: "Ubuntu Mono", monospace;
+    height:30px;
+    width:100%;
+	outline: none;
+	border: none;
+	border-top: 2px solid #444;
+	background: #ddd;
+    padding: 4px;
+    color:#444;
+}
+#console-type:focus{
+    background: #AAA;
+}
+#console-log .typed{
+    color: #AAA;
+}
+#console-log .number{
+    color: #08F;
+}
+#console-log .string{
+    color: #F80;
+}
+#console-log .boolean{
+    color: #F0F;
+}
+#console-log .error{
+    color: #F00;
+}
+
+
+.CodeMirror{
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 15px;
+}
+
+#iframe iframe{
+    width: 100%;
+    height: calc(100% - 30px)!important;
+    border:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.button{border:none;
+	padding:8px 12px;
+	display:inline-block;
+	
+	cursor:pointer;
+	border-radius:3px;
+	text-size-adjust:100%;
+	text-transform:uppercase;
+	touch-action:manipulation;
+	font-size:14px;
+	color:white;
+	user-select:none;
+	outline:none;
+	background:#666;overflow:hidden;
+	position:relative;}
+ .button:hover{box-shadow:inset 0px 0px 1px 1px #0004, inset 0px 0px 0px 100px #FFF1;}
+ .button:after{content:"";
+		position:absolute;
+		width:30px;height:30px;left:50%;top:50%;
+		transform:translate(-50%,-50%);
+		transition:transform .25s,opacity .01s;
+		background:#0002;
+		border-radius:100%;
+		opacity:0;
+		//animation-fill-mode: both;}
+ .button:active:after{/*$anim-button-click
+		animation-play-state:running;*/
+		opacity:1;transform:translate(-50%,-50%) scale(8);}
+ .button:focus{box-shadow:inset 0px 0px 3px 1px #0006, 
+							inset 0px 0px 0px 100px #FFF1,
+							0px 0px 0px 3px #6668;}
+ .button.info{background:#4AF;}
+ .button.info:focus{box-shadow:inset 0px 0px 3px 1px #0002,
+								0px 0px 3px 1px #0002,
+								inset 0px 0px 0px 100px #FFF1,
+								0px 0px 0px 3px #4AF4;}
+ .button.success{background:#0C0;}
+ .button.success:focus{box-shadow:inset 0px 0px 3px 1px #0002,
+								0px 0px 3px 1px #0002,
+								inset 0px 0px 0px 100px #FFF1,
+								0px 0px 0px 3px #4D44;}
+ .button.danger{background:#D40;}
+ .button.danger:focus{box-shadow:inset 0px 0px 3px 1px #0002,
+								0px 0px 3px 1px #0002,
+								inset 0px 0px 0px 100px #FFF1,
+								0px 0px 0px 3px #D404;}
+ .button.border{background:transparent;
+		color:#444;
+		font-weight:bold;box-shadow:inset 0px 0px 0px 1px;}
+ .button.border.info{color:#4AF;}
+ .button.border.success{color:#0C0;}
+ .button.border.danger{color:#F40;}
+ .button.border:hover{box-shadow:inset 0px 0px 1px 2px;}
+ .button.border:focus{box-shadow:inset 0px 0px 0px 3px;}
+ .button.border:active{transform:translate(0,0) scale(0.95);}
+ .button.border:after{display:none;}
+ .button.border-icon{background:transparent;
+		color:#444;
+		font-weight:bold;box-shadow:inset 0px 0px 0px 1px;}
+ .button.border-icon.info{color:#4AF;}
+ .button.border-icon.success{color:#0C0;}
+ .button.border-icon.danger{color:#F40;}
+ .button.border-icon:hover{box-shadow:inset 0px 0px 1px 2px;}
+ .button.border-icon:focus{box-shadow:inset 0px 0px 0px 3px;}
+ .button.border-icon:active{transform:translate(0,0) scale(0.95);}
+ .button.border-icon:after{display:none;}
+ .button.border-icon{border-radius:100%;
+		width:40px;height:40px;
+		display:inline-flex;align-items:center;justify-content:center;}
+ button{border:none;
+	padding:8px 12px;
+	display:inline-block;
+	
+	cursor:pointer;
+	border-radius:3px;
+	text-size-adjust:100%;
+	text-transform:uppercase;
+	touch-action:manipulation;
+	font-size:14px;
+	color:white;
+	user-select:none;
+	outline:none;
+	background:#666;overflow:hidden;
+	position:relative;}
+ button:hover{box-shadow:inset 0px 0px 1px 1px #0004, inset 0px 0px 0px 100px #FFF1;}
+ button:after{content:"";
+		position:absolute;
+		width:30px;height:30px;left:50%;top:50%;
+		transform:translate(-50%,-50%);
+		transition:transform .25s,opacity .01s;
+		background:#0002;
+		border-radius:100%;
+		opacity:0;
+		//animation-fill-mode: both;}
+ button:active:after{/*$anim-button-click
+		animation-play-state:running;*/
+		opacity:1;transform:translate(-50%,-50%) scale(8);}
+ button:focus{box-shadow:inset 0px 0px 3px 1px #0006, 
+							inset 0px 0px 0px 100px #FFF1,
+							0px 0px 0px 3px #6668;}
+ button.info{background:#4AF;}
+ button.info:focus{box-shadow:inset 0px 0px 3px 1px #0002,
+								0px 0px 3px 1px #0002,
+								inset 0px 0px 0px 100px #FFF1,
+								0px 0px 0px 3px #4AF4;}
+ button.success{background:#0C0;}
+ button.success:focus{box-shadow:inset 0px 0px 3px 1px #0002,
+								0px 0px 3px 1px #0002,
+								inset 0px 0px 0px 100px #FFF1,
+								0px 0px 0px 3px #4D44;}
+ button.danger{background:#D40;}
+ button.danger:focus{box-shadow:inset 0px 0px 3px 1px #0002,
+								0px 0px 3px 1px #0002,
+								inset 0px 0px 0px 100px #FFF1,
+								0px 0px 0px 3px #D404;}
+ button.border{background:transparent;
+		color:#444;
+		font-weight:bold;box-shadow:inset 0px 0px 0px 1px;}
+ button.border.info{color:#4AF;}
+ button.border.success{color:#0C0;}
+ button.border.danger{color:#F40;}
+ button.border:hover{box-shadow:inset 0px 0px 1px 2px;}
+ button.border:focus{box-shadow:inset 0px 0px 0px 3px;}
+ button.border:active{transform:translate(0,0) scale(0.95);}
+ button.border:after{display:none;}
+ button.border-icon{background:transparent;
+		color:#444;
+		font-weight:bold;box-shadow:inset 0px 0px 0px 1px;}
+ button.border-icon.info{color:#4AF;}
+ button.border-icon.success{color:#0C0;}
+ button.border-icon.danger{color:#F40;}
+ button.border-icon:hover{box-shadow:inset 0px 0px 1px 2px;}
+ button.border-icon:focus{box-shadow:inset 0px 0px 0px 3px;}
+ button.border-icon:active{transform:translate(0,0) scale(0.95);}
+ button.border-icon:after{display:none;}
+ button.border-icon{border-radius:100%;
+		width:40px;height:40px;
+		display:inline-flex;align-items:center;justify-content:center;}
+ .group .button{border-radius:0px;}
+ .group button{border-radius:0px;}
+ .group .button:first-child{border-radius:3px 0px 0px 3px}
+ .group button:first-child{border-radius:3px 0px 0px 3px}
+ .group .button:last-child{border-radius:0px 3px 3px 0px}
+ .group button:last-child{border-radius:0px 3px 3px 0px}
+ .group .button.border-icon:first-child{border-radius:100% 0px 0px 100%}
+ .group button.border-icon:first-child{border-radius:100% 0px 0px 100%}
+ .group .button.border-icon:last-child{border-radius:0px 100% 100% 0px}
+ .group button.border-icon:last-child{border-radius:0px 100% 100% 0px}
